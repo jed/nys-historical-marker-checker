@@ -6,15 +6,15 @@
 <meta property=og:image content="sign.jpg">
 
 <form name=sign>
-  <input name=title placeholder=Title  maxlength=15>
+  <input name=title placeholder="MARKER CHECKER"  maxlength=15>
 
-  <input name=body1 placeholder="Body line 1" maxlength=27>
-  <input name=body2 placeholder="Body line 2" maxlength=27>
-  <input name=body3 placeholder="Body line 3" maxlength=27>
-  <input name=body4 placeholder="Body line 4" maxlength=27>
-  <input name=body5 placeholder="Body line 5" maxlength=27>
+  <input name=body1 placeholder="A NEW YORK STATE HISTORICAL" maxlength=27>
+  <input name=body2 placeholder="MARKER CONSISTS OF A TITLE" maxlength=27>
+  <input name=body3 placeholder="OF 15 CHARACTERS, FIVE BODY" maxlength=27>
+  <input name=body4 placeholder="LINES OF 27 CHARACTERS, AND" maxlength=27>
+  <input name=body5 placeholder="A CREDIT OF 30 CHARACTERS." maxlength=27>
 
-  <input name=credit placeholder=Credit  maxlength=30>
+  <input name=credit placeholder="(C) JED SCHMIDT 2021" maxlength=30>
 </form>
 
 <!--
@@ -112,15 +112,9 @@
   let url = new URL(location)
   let inputs = document.forms.sign.elements
 
-  read()
-
-  function read() {
-    if (!location.search) location.search = '?title=marker+checker&body1=a+new+york+state+historical&body2=marker+consists+of+a+title&body3=of+15+characters%2c+five+body&body4=lines+of+27+characters%2c+and&body5=a+credit+of+30+characters.&credit=%28c%29+jed+schmidt+2021'
-
-    for (let input of inputs) {
-      input.value = url.searchParams.get(input.name)
-      input.addEventListener('input', write)
-    }
+  for (let input of inputs) {
+    input.value = url.searchParams.get(input.name)
+    input.addEventListener('input', write)
   }
 
   function write() {
