@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<form name=sign>
+  <input name=title placeholder=Title  maxlength=15>
+
+  <input name=body1 placeholder="Body line 1" maxlength=27>
+  <input name=body2 placeholder="Body line 2" maxlength=27>
+  <input name=body3 placeholder="Body line 3" maxlength=27>
+  <input name=body4 placeholder="Body line 4" maxlength=27>
+  <input name=body5 placeholder="Body line 5" maxlength=27>
+
+  <input name=credit placeholder=Credit  maxlength=30>
+</form>
+
+<footer>
+  Credits:
+  <a href="http://www.catskillcastings.com/preview.htm">Format</a> |
+  <a href="ttps://upload.wikimedia.org/wikipedia/commons/a/a2/FourCornersKingston.jpg">Image</a> |
+  <a href="chequered.ink">Font</a>
+</footer>
+
+<style>
+  @font-face {
+    font-family: MilestoneOne;
+    src: url("milestone-one.otf") format("opentype");
+  }
+
+  body {
+    background-image: url(sign.jpg);
+    background-size: 800px 800px;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 0;
+    margin: 0;
+    font-family: "MilestoneOne";
+    color: white;
+    text-align: center;
+  }
+
+  footer {
+    position: absolute;
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  form {
+    width: 800px;
+    height: 800px;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+  }
+
+  textarea, input {
+    text-transform: uppercase;
+    text-align: center;
+    background: none;
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    border: none;
+    font-family: "MilestoneOne";
+    letter-spacing: 5px;
+    text-shadow: -1px -1px 1px #0005, 1px 1px 1px #0005;
+  }
+
+  textarea, input, ::placeholder {
+    color: #ffeb33;
+  }
+
+  [name=title] {
+    font-size: 48px;
+    top: 168px;
+    left: 150px;
+    width: 502px;
+  }
+
+  [name^=body] {
+    font-size: 28px;
+    left: 150px;
+    width: 502px;
+  }
+
+  [name=body1] {
+    top: 234px;
+  }
+
+  [name=body2] {
+    top: 266px;
+  }
+
+  [name=body3] {
+    top: 298px;
+  }
+
+  [name=body4] {
+    top: 330px;
+  }
+
+  [name=body5] {
+    top: 362px;
+  }
+
+  [name=credit] {
+    font-size: 20px;
+    top: 412px;
+    left: 138px;
+    width: 514px;
+  }
+</style>
+
+<script>
+  let url = new URL(location)
+  let inputs = document.forms.sign.elements
+
+  read()
+
+  function read() {
+    if (!location.search) location.search = '?title=marker+checker&body1=a+new+york+state+historical&body2=marker+consists+of+a+title&body3=of+15+characters%2c+five+body&body4=lines+of+27+characters%2c+and&body5=a+credit+of+30+characters.&credit=%28c%29+jed+schmidt+2021'
+
+    for (let input of inputs) {
+      input.value = url.searchParams.get(input.name)
+      input.addEventListener('input', write)
+    }
+  }
+
+  function write() {
+    for (let input of inputs) {
+      url.searchParams.set(input.name, input.value)
+    }
+
+    history.replaceState({}, '', url)
+  }
+</script>
